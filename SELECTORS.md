@@ -18,7 +18,7 @@
 
 ## Creating a selector
 
-<p align="right"><a href="https://github.com/mrousavy/pipestate/blob/main/src/selector.ts"><code>selector.ts</code></a></p>
+<p align="right"><a href="https://github.com/mrousavy/pipestate/blob/main/src/selector.ts">🔍 <code>selector.ts</code></a></p>
 
 get only:
 
@@ -83,7 +83,7 @@ const ChatByIdSelector = selector({
 
 ## Managing selectors
 
-<p align="right"><a href="https://github.com/mrousavy/pipestate/blob/main/src/useSelector.ts"><code>useSelector.ts</code></a></p>
+<p align="right"><a href="https://github.com/mrousavy/pipestate/blob/main/src/useSelector.ts">🔍 <code>useSelector.ts</code></a></p>
 
 The `useSelector` hook provides access to a **selector** inside of a React component.
 Depending on whether the **selector** has a setter, it's return type changes.
