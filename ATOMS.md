@@ -16,6 +16,8 @@
 
 ## Creating an atom
 
+with a default value:
+
 ```ts
 const MyUserAtom = atom({
   default: {
@@ -25,7 +27,7 @@ const MyUserAtom = atom({
 })
 ```
 
-or with types and empty defaults:
+with types and empty defaults:
 
 ```ts
 const MyUserAtom = atom<User | undefined>({
@@ -33,7 +35,7 @@ const MyUserAtom = atom<User | undefined>({
 })
 ```
 
-or with lazy initialization:
+with lazy initialization:
 
 ```ts
 const MyUserAtom = atom<User | undefined>({
@@ -42,12 +44,19 @@ const MyUserAtom = atom<User | undefined>({
 })
 ```
 
-## Reading Atoms
+## Managing Atoms
 
 **Atoms** can also be inspected outside of a React component.
 
 ```ts
 const currentUser = MyUserAtom.current
+```
+
+and they provide a setter:
+
+```ts
+const newUser = await login(...)
+MyUserAtom.current = newUser
 ```
 
 You can also subscribe to changes in the **atom**
