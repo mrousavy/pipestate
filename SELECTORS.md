@@ -13,6 +13,8 @@
 
 * A **selector** is a derivation from one or many **atoms**
 * **Selectors** can also be async
+* **Selectors** can also have setters
+* **Selectors** can also have parameters
 
 ## Creating a selector
 
