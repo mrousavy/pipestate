@@ -26,10 +26,8 @@
 </div>
 
 <br/>
-<br/>
-<br/>
 
-### Install
+## Install
 
 ```sh
 npm i pipestate
