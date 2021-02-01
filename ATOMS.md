@@ -17,8 +17,6 @@
 
 ## Creating an atom
 
-<p align="right"><a href="https://github.com/mrousavy/pipestate/blob/main/src/atom.ts"><code>atom.ts</code></a></p>
-
 with a default value:
 
 ```ts
@@ -48,8 +46,6 @@ const MyUserAtom = atom<User | undefined>({
 ```
 
 ## Managing atoms
-
-<p align="right"><a href="https://github.com/mrousavy/pipestate/blob/main/src/useAtom.ts"><code>useAtom.ts</code></a></p>
 
 The `useAtom` hook provides access to an **atom** inside of a React component. It's syntax is identical to the `useState` syntax.
 
