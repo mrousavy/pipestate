@@ -69,10 +69,10 @@ with parameters:
 ```ts
 const ChatByIdSelector = selector({
   get: ({ get }, chatId: string) => {
-    const chats = get(Atoms.ChatsAtom)
+    const chats = get(ChatsAtom)
     return chats.find((c) => c.id === chatId)
   },
-  dependencies: [Atoms.ChatsAtom],
+  dependencies: [ChatsAtom],
 })
 ```
 
