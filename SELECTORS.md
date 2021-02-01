@@ -47,3 +47,91 @@ const CurrentCoordinatesSelector = selector({
   dependencies: [CurrentLocationAtom]
 })
 ```
+
+async get with default value:
+
+```ts
+const CurrentCoordinatesSelector = selector({
+  default: { latitude: 0, longitude: 0 },
+  get: async ({ get }) => {
+    const currentLocation = get(CurrentLocationAtom)
+    const isValid = await verifyLocation(currentLocation)
+    if (!isValid)
+      return undefined
+    return currentLocation.coordinates
+  },
+  dependencies: [CurrentLocationAtom]
+})
+```
+
+with parameters:
+
+```ts
+const ChatByIdSelector = selector({
+  get: ({ get }, chatId: string) => {
+    const chats = get(Atoms.ChatsAtom)
+    return chats.find((c) => c.id === chatId)
+  },
+  dependencies: [Atoms.ChatsAtom],
+})
+```
+
+## Managing selectors
+
+The `useSelector` hook provides access to a **selector** inside of a React component.
+Depending on whether the **selector** has a setter, it's return type changes.
+
+get only:
+
+```tsx
+export default function App() {
+  const [coordinates] = useSelector(CurrentCoordinatesSelector)
+
+  return <Text>Coordinates: {coordinates}.</Text>
+}
+```
+
+get and set:
+
+```tsx
+export default function App() {
+  const [coordinates, setCoordinates] = useSelector(CurrentCoordinatesSelector)
+
+  const onGpsLocationChanged = useCallback(async (newLocation) => {
+    await setCoordinates(newLocation.coordinates)
+  }, [setCoordinates])
+
+  return <Text>Coordinates: {coordinates}</Text>
+}
+```
+
+with parameters:
+
+```tsx
+export default function App() {
+  const [chatId, setChatId] = useState('')
+  const [chat] = useSelector(ChatByIdSelector, chatId)
+
+  return <Text>Chat: {chat}.</Text>
+}
+```
+
+## Statically managing selectors
+
+**Selectors** can also be inspected outside of a React component.
+
+```ts
+const currentCoordinates = CurrentCoordinatesSelector.get()
+```
+
+and if they provide a setter:
+
+```ts
+CurrentCoordinatesSelector.set(newCoordinates)
+```
+
+
+<br />
+<br />
+
+> **🎉 🥳 Hooray you're done with the docs!**
