@@ -49,7 +49,7 @@ const MyUserAtom = atom<User | undefined>({
 
 The `useAtom` hook provides access to an **atom** inside of a React component. It's syntax is identical to the `useState` syntax.
 
-```tsx
+```jsx
 export default function App() {
   const [user, setUser] = useAtom(MyUserAtom)
 
