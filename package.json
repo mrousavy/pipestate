@@ -22,7 +22,7 @@
     "minimal"
   ],
   "author": "Marc Rousavy",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/mrousavy/pipestate/issues"
   },
