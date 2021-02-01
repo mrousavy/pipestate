@@ -9,3 +9,6 @@
 <br />
 
 # Selectors
+
+* A **selector** is a derivation from one or many **atoms**
+* **Selectors** can be async
