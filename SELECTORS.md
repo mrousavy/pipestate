@@ -86,7 +86,7 @@ Depending on whether the **selector** has a setter, it's return type changes.
 
 get only:
 
-```tsx
+```jsx
 export default function App() {
   const [coordinates] = useSelector(CurrentCoordinatesSelector)
 
