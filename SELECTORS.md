@@ -96,7 +96,7 @@ export default function App() {
 
 get and set:
 
-```tsx
+```jsx
 export default function App() {
   const [coordinates, setCoordinates] = useSelector(CurrentCoordinatesSelector)
 
@@ -110,7 +110,7 @@ export default function App() {
 
 with parameters:
 
-```tsx
+```jsx
 export default function App() {
   const [chatId, setChatId] = useState('')
   const [chat] = useSelector(ChatByIdSelector, chatId)
