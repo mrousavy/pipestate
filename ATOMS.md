@@ -9,3 +9,56 @@
 <br />
 
 # Atoms
+
+* An **atom** is a simple JavaScript object which represents state in your application.
+* **Atoms** use "pipes" to publish changes.
+* To use [selectors](SELECTORS.md), you have to create an **atom** first.
+
+## Creating an atom
+
+```ts
+const MyUserAtom = atom({
+  default: {
+    name: 'Marc',
+    id: 0
+  }
+})
+```
+
+or with types and empty defaults:
+
+```ts
+const MyUserAtom = atom<User | undefined>({
+  default: undefined
+})
+```
+
+or with lazy initialization:
+
+```ts
+const MyUserAtom = atom<User | undefined>({
+  default: undefined,
+  initialize: async () => await loadUser()
+})
+```
+
+## Reading Atoms
+
+**Atoms** can also be inspected outside of a React component.
+
+```ts
+const currentUser = MyUserAtom.current
+```
+
+You can also subscribe to changes in the **atom**
+
+```ts
+MyUserAtom.subscribe((newUser) => {
+  console.log(`Welcome ${newUser.name}`)
+})
+```
+
+<br />
+<br />
+
+> **🎉 🥳 Hooray you're ready to learn about [selectors](SELECTORS.md)!**
