@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "A minimal state management library for React.",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "lint": "eslint src/**",
+    "build": "tsc --noEmit false",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

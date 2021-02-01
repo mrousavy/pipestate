@@ -22,7 +22,7 @@
   <br />
   <a href="https://github.com/mrousavy?tab=followers"><img src="https://img.shields.io/github/followers/mrousavy?label=Follow%20%40mrousavy&style=social"></a>
   <br />
-  <a href="https://img.shields.io/twitter/follow/mrousavy?label=Follow%20%40mrousavy&style=social"><img src="https://twitter.com/mrousavy"></a>
+  <a href="https://twitter.com/mrousavy"><img src="https://img.shields.io/twitter/follow/mrousavy?label=Follow%20%40mrousavy&style=social"></a>
 </div>
 
 <br/>
