@@ -32,3 +32,8 @@
 ```sh
 npm i pipestate
 ```
+
+<br />
+<br />
+
+> **🎉 🥳 Hooray you're ready to learn about [atoms](ATOMS.md)!**
