@@ -1,0 +1,28 @@
+{
+  "name": "pipestate",
+  "version": "1.0.0",
+  "description": "A minimal state management library for React.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrousavy/pipestate.git"
+  },
+  "keywords": [
+    "react",
+    "state",
+    "management",
+    "minimal"
+  ],
+  "author": "Marc Rousavy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrousavy/pipestate/issues"
+  },
+  "homepage": "https://github.com/mrousavy/pipestate#readme",
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}
