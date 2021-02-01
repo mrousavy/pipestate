@@ -3,6 +3,7 @@
 <th><a href="./README.md">README.md</a></th>
 <th><a href="./ATOMS.md">ATOMS.md</a></th>
 <th>SELECTORS.md</th>
+<th><a href="./BEST-PRACTICES.md">BEST-PRACTICES.md</a></th>
 </tr>
 </table>
 
@@ -130,8 +131,7 @@ and if they provide a setter:
 CurrentCoordinatesSelector.set(newCoordinates)
 ```
 
-
 <br />
 <br />
 
-> **🎉 🥳 Hooray you're done with the docs!**
+> **🎉 🥳 Hooray you're ready to learn about [best practices](BEST-PRACTICES.md)!**

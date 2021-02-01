@@ -3,6 +3,7 @@
 <th><a href="./README.md">README.md</a></th>
 <th>ATOMS.md</th>
 <th><a href="./SELECTORS.md">SELECTORS.md</a></th>
+<th><a href="./BEST-PRACTICES.md">BEST-PRACTICES.md</a></th>
 </tr>
 </table>
 
