@@ -17,9 +17,9 @@
   <br />
   <a href='https://ko-fi.com/F1F8CLXG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
   <br />
-  <a href="https://www.npmjs.com/package/pipestate"><img src="https://img.shields.io/npm/v/pipestate?color=%239ba298"</a>
+  <a href="https://www.npmjs.com/package/pipestate"><img src="https://img.shields.io/npm/v/pipestate?color=%235d91fe"</a>
   <br />
-  <a href="https://www.npmjs.com/package/pipestate"><img src="https://img.shields.io/npm/dt/pipestate?color=%239ba298"</a>
+  <a href="https://www.npmjs.com/package/pipestate"><img src="https://img.shields.io/npm/dt/pipestate?color=%235d91fe"</a>
   <br />
   <a href="https://github.com/mrousavy?tab=followers"><img src="https://img.shields.io/github/followers/mrousavy?label=Follow%20%40mrousavy&style=social"></a>
   <br />
