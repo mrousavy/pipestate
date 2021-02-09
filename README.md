@@ -35,6 +35,7 @@
 * No Context API/HoC Wrappers
 * Works with multiple React roots (compatible with [react-native-navigation](http://github.com/wix/react-native-navigation)!)
 * Great TypeScript support
+* Async selectors, lazy initializers, selectors with setters, and more!
 
 ## Install
 
