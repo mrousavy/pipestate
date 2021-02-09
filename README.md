@@ -30,10 +30,11 @@
 
 ## Why?
 
-* Simple and un-opinionated
+* Simple API and terminology so you don't feel like you're learning a new language
 * Based on React hooks to maintain a clean and easy API
 * No Context API/HoC Wrappers
 * Works with multiple React roots (compatible with [react-native-navigation](http://github.com/wix/react-native-navigation)!)
+* Great TypeScript support
 
 ## Install
 
