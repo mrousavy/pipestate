@@ -3,11 +3,7 @@ import { unstable_batchedUpdates } from 'react-native'
 type Callback<T> = (newValue: T) => void
 
 export class Pipe<T> {
-    private _subscribers: Callback<T>[]
-
-    constructor() {
-        this._subscribers = []
-    }
+    private _subscribers: Callback<T>[] = []
 
     /**
      * Subscribes to changes in this Pipe.
