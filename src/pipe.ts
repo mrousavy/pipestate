@@ -37,9 +37,11 @@ export class Pipe<T> {
      * @param newValue The new value to pass to the callbacks.
      */
     public invoke(newValue: T): void {
-        // reversed loop because of first in first out principle
+        // invoke latest subscriber immediately
+        this._subscribers[this._subscribers.length - 1]?.(newValue)
+        // invoke older subscribers in reversed loop because of first in first out principle
         unstable_batchedUpdates(() => {
-            for (let i = this._subscribers.length - 1; i >= 0; i--) this._subscribers[i]?.(newValue)
+            for (let i = this._subscribers.length - 2; i >= 0; i--) this._subscribers[i]?.(newValue)
         })
     }
 }
