@@ -4,7 +4,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2019,
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'react', 'react-native', '@react-native-community', 'prettier', 'react-hooks'],
@@ -18,6 +18,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   rules: {
+    indent: ['warn', 2],
     // eslint
     semi: 'off',
     curly: ['warn', 'multi-or-nest', 'consistent'],
