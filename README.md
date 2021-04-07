@@ -24,6 +24,11 @@
   <a href="https://github.com/mrousavy?tab=followers"><img src="https://img.shields.io/github/followers/mrousavy?label=Follow%20%40mrousavy&style=social"></a>
   <br />
   <a href="https://twitter.com/mrousavy"><img src="https://img.shields.io/twitter/follow/mrousavy?label=Follow%20%40mrousavy&style=social"></a>
+  <br />
+  <br />
+  <pre>npm i <a href="https://www.npmjs.com/package/pipestate">pipestate</a></pre>
+  <br />
+  <br />
 </div>
 
 <br/>
@@ -36,12 +41,6 @@
 * Works with multiple React roots (compatible with [react-native-navigation](http://github.com/wix/react-native-navigation)!)
 * Great TypeScript support
 * Async selectors, lazy initializers, selectors with setters, and more!
-
-## Install
-
-```sh
-npm i pipestate
-```
 
 <br />
 <br />
