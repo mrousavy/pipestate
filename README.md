@@ -26,8 +26,10 @@
   <a href="https://twitter.com/mrousavy"><img src="https://img.shields.io/twitter/follow/mrousavy?label=Follow%20%40mrousavy&style=social"></a>
   <br />
   <br />
-  <pre>npm i <a href="https://www.npmjs.com/package/pipestate">pipestate</a></pre>
   <br />
+  <br />
+  <br />
+  <pre>npm i <a href="https://www.npmjs.com/package/pipestate">pipestate</a></pre>
   <br />
 </div>
 
