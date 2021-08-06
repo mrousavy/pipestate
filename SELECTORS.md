@@ -79,7 +79,7 @@ const ChatByIdSelector = selector({
 })
 ```
 
-## Managing selectors
+## Calling selectors
 
 The `useSelector` hook provides access to a **selector** inside of a React component.
 Depending on whether the **selector** has a setter, it's return type changes.
@@ -119,7 +119,7 @@ export default function App() {
 }
 ```
 
-## Statically managing selectors
+## Statically calling selectors
 
 **Selectors** can also be inspected outside of a React component.
 
