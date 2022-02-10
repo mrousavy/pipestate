@@ -1,4 +1,4 @@
-import { unstable_batchedUpdates } from 'react-native'
+import { batchedUpdates } from './batchedUpdates'
 
 type Callback<T> = (newValue: T) => void
 
@@ -36,7 +36,7 @@ export class Pipe<T> {
     // invoke latest subscriber immediately
     this._subscribers[this._subscribers.length - 1]?.(newValue)
     // invoke older subscribers in reversed loop because of first in first out principle
-    unstable_batchedUpdates(() => {
+    batchedUpdates(() => {
       for (let i = this._subscribers.length - 2; i >= 0; i--) this._subscribers[i]?.(newValue)
     })
   }
