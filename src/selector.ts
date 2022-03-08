@@ -12,12 +12,10 @@ interface SelectorSetAtomCommands {
 
 export interface SelectorProps<T, P extends any[]> {
   get: (commands: SelectorGetAtomCommands, ...request: P) => T
-  dependencies: Atom<any>[]
 }
 export interface AsyncSelectorProps<T, P extends any[]> {
   default: T
   get: (commands: SelectorGetAtomCommands, ...request: P) => Promise<T>
-  dependencies: Atom<any>[]
 }
 export type WithSetProps<
   T,
@@ -29,12 +27,10 @@ export type WithSetProps<
 
 export interface Selector<T, P extends any[]> {
   get: (...request: P) => T
-  dependencies: Atom<any>[]
 }
 export interface AsyncSelector<T, P extends any[]> {
   default: T
   get: (...request: P) => Promise<T>
-  dependencies: Atom<any>[]
 }
 export type WithSet<
   T,
@@ -86,13 +82,11 @@ export function selector<T, P extends any[]>(
         default: asyncProps.default,
         get: (...p) => asyncProps.get({ get }, ...p),
         set: (v) => setProps.set({ get, set }, v),
-        dependencies: asyncProps.dependencies,
       } as WithSet<T, P, AsyncSelector<T, P>>
     } else {
       return {
         get: (...p) => props.get({ get }, ...p),
         set: (v) => setProps.set({ get, set }, v),
-        dependencies: props.dependencies,
       } as WithSet<T, P, Selector<T, P>>
     }
   } else {
@@ -101,12 +95,10 @@ export function selector<T, P extends any[]>(
       return {
         default: asyncProps.default,
         get: (...p) => asyncProps.get({ get }, ...p),
-        dependencies: asyncProps.dependencies,
       } as AsyncSelector<T, P>
     } else {
       return {
         get: (...p) => props.get({ get }, ...p),
-        dependencies: props.dependencies,
       } as Selector<T, P>
     }
   }

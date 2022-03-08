@@ -1,3 +1,4 @@
+import { AccessQueue } from './access-queue'
 import { Pipe } from './pipe'
 
 interface AtomProps<T> {
@@ -37,6 +38,13 @@ export class Atom<T> {
   }
 }
 
+export const atomAccessQueue = new AccessQueue<Atom<unknown>>()
+
 export function atom<T>(props: AtomProps<T> | AsyncAtomProps<T>): Atom<T> {
-  return new Atom(props)
+  return new Proxy(new Atom(props), {
+    get: (t, p) => {
+      atomAccessQueue.add(t as Atom<unknown>)
+      return t[p as keyof typeof t]
+    },
+  })
 }
