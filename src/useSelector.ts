@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { AccessQueue, withAccessQueue, withAccessQueueAsync } from './access-queue'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { withAccessQueue, withAccessQueueAsync } from './access-queue'
 import { Atom, atomAccessQueue } from './atom'
 import { AsyncSelector, Selector, WithSet } from './selector'
 
@@ -17,10 +17,6 @@ function getDefaultSelectorState<T, P extends unknown[]>(
     )
   }
   return defaultSyncValue
-}
-
-interface Listener {
-  unsubscribe: () => void
 }
 
 function arrayEquals<T>(left: T[], right: T[]): boolean {
