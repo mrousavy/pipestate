@@ -74,14 +74,13 @@ export function useSelector<T, P extends unknown[]>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selector, ...parameters])
 
-  const defaultState = useMemo(() => {
+  const [state, setState] = useState<T>(() => {
     const { accessedValues, result } = withAccessQueue(atomAccessQueue, () =>
       getDefaultSelectorState(selector, ...parameters)
     )
     onDependenciesChanged(accessedValues)
     return result
-  }, [onDependenciesChanged, selector, parameters])
-  const [state, setState] = useState<T>(defaultState)
+  })
 
   const setSelector = useCallback(
     (newValue: T) => {
