@@ -68,7 +68,7 @@ export function useSelector<T, P extends unknown[]>(
 
     // The dependencies here are a bit tricky, I have to watch out to not forget anything here. I can't just use `parameters` since reference equality isn't maintained on re-renders (because `parameters` is actually of type array, that's how variadic arguments work), so I have to spread 'em.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selector, ...parameters])
+  }, [onDependenciesChanged, selector, ...parameters])
 
   const [state, setState] = useState<T>(() => {
     const { accessedValues, result } = withAccessQueue(atomAccessQueue, () =>
