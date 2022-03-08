@@ -50,7 +50,14 @@ export function useSelector<T, P extends unknown[]>(
       ? (selector as WithSet<T, P, Selector<T, P> | AsyncSelector<T, P>>)
       : undefined
 
-  const [dependencies, setDependencies] = useState<Atom<unknown>[]>([])
+  const [{ result: initialState, accessedValues: initialDependencies }] = useState(() =>
+    withAccessQueue(atomAccessQueue, () => getDefaultSelectorState(selector, ...parameters))
+  )
+
+  const [state, setState] = useState<T>(initialState)
+  const [dependencies, setDependencies] = useState(initialDependencies)
+
+  // copy to ref to avoid re-computation of useCallback
   const dependenciesRef = useRef(dependencies)
   dependenciesRef.current = dependencies
 
@@ -69,14 +76,6 @@ export function useSelector<T, P extends unknown[]>(
     // The dependencies here are a bit tricky, I have to watch out to not forget anything here. I can't just use `parameters` since reference equality isn't maintained on re-renders (because `parameters` is actually of type array, that's how variadic arguments work), so I have to spread 'em.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onDependenciesChanged, selector, ...parameters])
-
-  const [state, setState] = useState<T>(() => {
-    const { accessedValues, result } = withAccessQueue(atomAccessQueue, () =>
-      getDefaultSelectorState(selector, ...parameters)
-    )
-    onDependenciesChanged(accessedValues)
-    return result
-  })
 
   const setSelector = useCallback(
     (newValue: T) => {
