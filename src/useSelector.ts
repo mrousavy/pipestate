@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { withAccessQueue, withAccessQueueAsync } from './access-queue'
+import { Atom, atomAccessQueue } from './atom'
 import { AsyncSelector, Selector, WithSet } from './selector'
 
 function getDefaultSelectorState<T, P extends unknown[]>(
@@ -15,6 +17,10 @@ function getDefaultSelectorState<T, P extends unknown[]>(
     )
   }
   return defaultSyncValue
+}
+
+function arrayEquals<T>(left: T[], right: T[]): boolean {
+  return left.length === right.length && !left.some((v, i) => right[i] !== v)
 }
 
 export function useSelector<T, P extends unknown[]>(
@@ -43,23 +49,34 @@ export function useSelector<T, P extends unknown[]>(
     (selector as WithSet<T, P, Selector<T, P> | AsyncSelector<T, P>>)?.set != null
       ? (selector as WithSet<T, P, Selector<T, P> | AsyncSelector<T, P>>)
       : undefined
-  const defaultState = useMemo(() => getDefaultSelectorState(selector, ...parameters), [
-    selector,
-    parameters,
-  ])
-  const [state, setState] = useState<T>(defaultState)
+
+  const [{ result: initialState, accessedValues: initialDependencies }] = useState(() =>
+    withAccessQueue(atomAccessQueue, () => getDefaultSelectorState(selector, ...parameters))
+  )
+
+  const [state, setState] = useState<T>(initialState)
+  const [dependencies, setDependencies] = useState(initialDependencies)
+
+  // copy to ref to avoid re-computation of useCallback
+  const dependenciesRef = useRef(dependencies)
+  dependenciesRef.current = dependencies
+
+  const onDependenciesChanged = useCallback((newDependencies: Atom<unknown>[]) => {
+    if (!arrayEquals(newDependencies, dependenciesRef.current)) setDependencies(newDependencies)
+  }, [])
 
   const updateSelectorState = useCallback(async () => {
-    const result = selector.get(...parameters)
-    if (result instanceof Promise) {
-      const t = await result
-      setState(t)
-    } else {
-      setState(result)
-    }
+    const { accessedValues, result } = await withAccessQueueAsync(atomAccessQueue, async () => {
+      // eslint-disable-next-line no-return-await
+      return await selector.get(...parameters)
+    })
+    onDependenciesChanged(accessedValues)
+    setState(result)
+
     // The dependencies here are a bit tricky, I have to watch out to not forget anything here. I can't just use `parameters` since reference equality isn't maintained on re-renders (because `parameters` is actually of type array, that's how variadic arguments work), so I have to spread 'em.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selector, ...parameters])
+  }, [onDependenciesChanged, selector, ...parameters])
+
   const setSelector = useCallback(
     (newValue: T) => {
       if (selectorWithSet == null) throw new Error('Selector does not have a setter!')
@@ -69,11 +86,11 @@ export function useSelector<T, P extends unknown[]>(
   )
 
   useEffect(() => {
-    const unsubscribers = selector.dependencies.map((a) => a.subscribe(() => updateSelectorState()))
+    const listeners = dependencies.map((d) => d.subscribe(() => updateSelectorState()))
     return () => {
-      unsubscribers.forEach((u) => u())
+      listeners.forEach((unsubscribe) => unsubscribe())
     }
-  }, [selector.dependencies, updateSelectorState])
+  }, [dependencies, updateSelectorState])
 
   if (selectorWithSet == null) return [state]
   else return [state, setSelector]
